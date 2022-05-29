@@ -36,10 +36,15 @@ class Blockchain {
             const { timestamp, lastHash, nonce, difficulty, hash, data } =
                 chain[i];
 
+            // validate lastHash
             const actualLastHash = chain[i - 1].hash;
-
             if (lastHash !== actualLastHash) return false;
 
+            // validate difficulty
+            const lastDifficulty = chain[i - 1].difficulty;
+            if (Math.abs(lastDifficulty - difficulty) > 1) return false;
+
+            // validate hash
             const validatedHash = cryptoHash(
                 timestamp,
                 lastHash,
@@ -47,7 +52,6 @@ class Blockchain {
                 nonce,
                 difficulty
             );
-
             if (validatedHash !== hash) return false;
         }
         return true;

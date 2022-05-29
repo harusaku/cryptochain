@@ -1,0 +1,19 @@
+{
+    "name": "cryptochain",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --watchAll",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^23.6.0"
+    },
+    "dependencies": {
+        "prettier": "^2.6.2"
+    }
+}

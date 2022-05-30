@@ -37,8 +37,13 @@ class PubSub {
         });
     }
 
+    // avoid receiving its own published message
     publish({ channel, message }) {
-        this.publisher.publish(channel, message);
+        this.subscriber.unsubscribe(channel, () => {
+            this.publisher.publish(channel, message, () => {
+                this.subscriber.subscribe(channel);
+            });
+        });
     }
 
     broadcastChain() {

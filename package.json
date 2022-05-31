@@ -11,16 +11,25 @@
         "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js",
         "start-redis": "docker-compose up -d"
     },
+    "jest": {
+        "testEnvironment": "node"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "cross-env": "^5.2.0",
+        "eslint": "^8.16.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.2.0",
+        "eslint-plugin-promise": "^6.0.0",
         "jest": "^23.6.0",
         "nodemon": "^1.18.4"
     },
     "dependencies": {
         "body-parser": "^1.18.3",
+        "elliptic": "^6.4.1",
         "express": "^4.16.3",
         "hex-to-binary": "^1.0.1",
         "prettier": "^2.6.2",

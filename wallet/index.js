@@ -11,7 +11,7 @@ class Wallet {
     }
 
     sign(data) {
-        return this.keyPair.sign(cryptoHash(data));
+        return this.keyPair.sign(cryptoHash(JSON.stringify(data)));
     }
 }
 

@@ -55,6 +55,9 @@ class Transaction {
         });
     }
 
+    // validate transaction
+    // whether the transaction is really made by senderWallet
+    // or not chaged by other people
     static validTransaction(transaction) {
         const {
             input: { address, amount, signature },

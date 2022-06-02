@@ -1,4 +1,4 @@
-const Transactioin = require('./transaction');
+const Transaction = require('./transaction');
 const Wallet = require('./index');
 const { verifySignature } = require('../util');
 
@@ -10,7 +10,7 @@ describe('Transaction', () => {
         recipient = 'recipient-public-key';
         amount = 50;
 
-        transaction = new Transactioin({ senderWallet, recipient, amount });
+        transaction = new Transaction({ senderWallet, recipient, amount });
     });
 
     it('has an `id`', () => {
@@ -72,7 +72,7 @@ describe('Transaction', () => {
 
         describe('when the transaction is valid', () => {
             it('returns true', () => {
-                expect(Transactioin.validTransaction(transaction)).toBe(true);
+                expect(Transaction.validTransaction(transaction)).toBe(true);
             });
         });
         describe('when the transaction is invalid', () => {
@@ -80,7 +80,7 @@ describe('Transaction', () => {
                 it('returns false and logs an error', () => {
                     transaction.outputMap[senderWallet.publicKey] = 999999;
 
-                    expect(Transactioin.validTransaction(transaction)).toBe(
+                    expect(Transaction.validTransaction(transaction)).toBe(
                         false
                     );
                     expect(errorMock).toHaveBeenCalled();
@@ -91,7 +91,7 @@ describe('Transaction', () => {
                 it('returns false and logs an error', () => {
                     transaction.input.signature = new Wallet().sign('data');
 
-                    expect(Transactioin.validTransaction(transaction)).toBe(
+                    expect(Transaction.validTransaction(transaction)).toBe(
                         false
                     );
                     expect(errorMock).toHaveBeenCalled();
